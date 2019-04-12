@@ -1,13 +1,13 @@
 const fetch = require("isomorphic-fetch");
 
-async function post(endpoint, path, body = {}, opts = {}) {
+async function post({ endpoint, path, token }, body = {}) {
   return await format_response(
     await fetch(endpoint + path, {
       method: "POST",
       body: JSON.stringify(body),
       headers: {
         "content-type": "application/json",
-        token: opts.token
+        token: token
       }
     })
   );

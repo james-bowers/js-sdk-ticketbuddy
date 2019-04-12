@@ -1,5 +1,12 @@
 const client = require("./client");
 
-exports.create = async function() {
-  return await client.post(client.TICKETBUDDY_BACKEND, "/company", {});
+exports.create = async function({ token }) {
+  return await client.post(
+    {
+      token,
+      path: "/company",
+      endpoint: client.TICKETBUDDY_BACKEND
+    },
+    {}
+  );
 };
